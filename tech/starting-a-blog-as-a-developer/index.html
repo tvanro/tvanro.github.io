@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Starting a blog as a developer - Tom Van Rompaey</title>
+  <meta property="og:title" content="Starting a blog as a developer - Tom Van Rompaey">
+  <meta name="description" content="For normal bloggers it’s easyThey choose a platform they like (Wordpress, Blogger, Tumbler, … ), pickout a good looking template and start blogging.">
+  <meta property="og:description" content="For normal bloggers it’s easyThey choose a platform they like (Wordpress, Blogger, Tumbler, … ), pickout a good looking template and start blogging.">
+  
+    <meta property="og:image" content="http://www.tvanro.be/assets/headers/ide.jpg">
+  
+  <meta property="og:url" content="http://www.tvanro.be/tech/starting-a-blog-as-a-developer/">
+  <link rel="canonical" href="http://www.tvanro.be/tech/starting-a-blog-as-a-developer/">
+  <link rel="stylesheet" href="/css/main.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="data:image/x-icon;base64,AAABAAEAEBAQAAAAAAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAA//8AAP//AAD+DwAA/38AAP+/AAD4DwAAgAcAAPgDAAD8AwAA/wMAAP/DAAD/4QAA//AAAP//AAD//wAA" rel="icon" type="image/x-icon" />
+</head>
+
+  <body class="side-header">
+    <div id="wrapper">
+      <header id="header">
+  <div id="header-wrap">
+    <div class="container clearfix">
+      <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
+
+      <!-- Logo
+      ============================================= -->
+      <div id="logo">
+        
+          <h2><a href="/">Tom Van Rompaey</a></h2>
+        
+      </div>
+
+      <!-- Primary Navigation
+      ============================================= -->
+      <nav id="primary-menu">
+
+        <ul class="one-page-menu">
+          
+            
+              
+              
+              <li class=""><a class="page-link" href="/about/">About</a></li>
+            
+          
+            
+              
+              
+              <li class=""><a class="page-link" href="/food/">Food</a></li>
+            
+          
+            
+          
+            
+          
+            
+              
+              
+              <li class="current"><a class="page-link" href="/tech/">Tech</a></li>
+            
+          
+            
+              
+              
+              <li class=""><a class="page-link" href="/travel/">Travel</a></li>
+            
+          
+        </ul>
+
+      </nav>
+
+      <div class="clearfix social-icon-wrapper visible-md visible-lg">
+          <a href="https://www.linkedin.com/in/tvanro/" target="_blank" class="social-icon si-small si-borderless si-linkedin">
+              <i class="icon-linkedin"></i>
+              <i class="icon-linkedin"></i>
+          </a>
+          <a href="https://www.facebook.com/tvanro" target="_blank" class="social-icon si-small si-borderless si-facebook">
+              <i class="icon-facebook"></i>
+              <i class="icon-facebook"></i>
+          </a>
+          <a href="https://stackoverflow.com/users/4810504/tom-van-rompaey" target="_blank" class="social-icon si-small si-borderless si-stackoverflow">
+              <i class="icon-stackoverflow"></i>
+              <i class="icon-stackoverflow"></i>
+          </a>
+          <a href="https://github.com/tvanro" target="_blank" class="social-icon si-small si-borderless si-github">
+              <i class="icon-github"></i>
+              <i class="icon-github"></i>
+          </a>
+          <a href="mailto:tom@tvanro.be" target="_blank" class="social-icon si-small si-borderless si-email3">
+              <i class="icon-email3"></i>
+              <i class="icon-email3"></i>
+          </a>
+      </div>
+
+    </div>
+
+  </div>
+
+</header>
+
+      <section id="content">
+        
+          
+          <section id="page-title" class="page-title-parallax page-title-dark" style="background-image: url('/assets/headers/ide.jpg'); background-size: cover; background-position: center center;" data-stellar-background-ratio="0.2">
+            <div class="container clearfix"><h1>Starting a blog as a developer</h1><span></span></div>
+          </section>
+        
+  			<div class="content-wrap hasheaderimage">
+          <div class="container clearfix">
+            <div class="postcontent nobottommargin clearfix">
+              <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <p class="post-meta">
+      <meta itemprop="name headline" content="Starting a blog as a developer" />
+      
+      <meta itemprop="image" content='/assets/headers/ide.jpg'>
+      
+      <time datetime="2017-04-03T00:00:00+08:00" itemprop="datePublished"></time>
+      
+    </p>
+    
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <h2 id="for-normal-bloggers-its-easy">For normal bloggers it’s easy</h2>
+<p>They choose a platform they like (Wordpress, Blogger, Tumbler, … ), pickout a good looking template and start blogging.</p>
+
+<p>For a developer, with technical pride, this flow could be much longer as we want to build something ourselves and it could result in a situation where building the technical part takes more time than actually writing blog posts.</p>
+
+<p>So… That’s why I also started with researching the technologies I could use instead of thinking about what I wanted to blog about. My goal was to have a lightweight site that’s easy to maintain, easy to write blog posts and preferablly no server side rendering. A static site generator is exactly what qualifies these requirements and my eye fell on Jekyll as this is currently the most popular one with the biggest community.</p>
+
+<h2 id="blog-specs">Blog Specs:</h2>
+
+<ul>
+  <li><a href="https://jekyllrb.com" target="_blank">Jekyll</a></li>
+  <li>UglifyJS for minifying JavaScript</li>
+  <li>CleanCSS for minifying CSS</li>
+  <li>SASS for managing the CSS</li>
+  <li>Hosted (for free!) on <a href="https://pages.github.com" target="_blank">GitHub Pages</a></li>
+</ul>
+
+<h3 id="build--deploy-process">Build &amp; Deploy process</h3>
+
+<p>Basically it’s just a normal Jekyll implementation with one hook added inside the plugins to start a node process to minify the JavaScript and CSS every time Jekyll finishes with a build.</p>
+
+<p><strong>/_plugins/build.rb</strong></p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="no">Jekyll</span><span class="o">::</span><span class="no">Hooks</span><span class="p">.</span><span class="nf">register</span> <span class="ss">:site</span><span class="p">,</span> <span class="ss">:post_write</span> <span class="k">do</span> <span class="o">|</span><span class="n">site</span><span class="o">|</span>
+    <span class="nb">system</span><span class="p">(</span><span class="s1">'node build.js'</span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+<p><strong>build.js</strong></p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">CleanCSS</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'clean-css'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">UglifyJS</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'uglify-js'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs'</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">stylesheetLocation</span> <span class="o">=</span> <span class="s1">'_site/css'</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">jsLocation</span> <span class="o">=</span> <span class="s1">'_site/js'</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">clean</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// minify CSS</span>
+  <span class="kd">var</span> <span class="nx">css</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="nx">stylesheetLocation</span><span class="p">}</span><span class="sr">/main.css`, 'utf8'</span><span class="se">)</span><span class="err">;
+</span>  <span class="k">new</span> <span class="nx">CleanCSS</span><span class="p">().</span><span class="nx">minify</span><span class="p">(</span><span class="nx">css</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">errors</span><span class="p">,</span> <span class="nx">minified</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// minified.styles </span>
+    <span class="nx">fs</span><span class="p">.</span><span class="nx">writeFile</span><span class="p">(</span><span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="nx">stylesheetLocation</span><span class="p">}</span><span class="sr">/main.min.css`, minified.styles, function</span><span class="se">()</span><span class="sr"> </span><span class="err">{
+</span>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'CleanCSS completed'</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">uglify</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// minify JS</span>
+  <span class="kd">var</span> <span class="nx">minifyResult</span> <span class="o">=</span> <span class="nx">UglifyJS</span><span class="p">.</span><span class="nx">minify</span><span class="p">([</span> <span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="nx">jsLocation</span><span class="p">}</span><span class="sr">/tvanro.js` ]</span><span class="se">)</span><span class="err">;
+</span>  <span class="nx">fs</span><span class="p">.</span><span class="nx">writeFile</span><span class="p">(</span><span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="nx">jsLocation</span><span class="p">}</span><span class="sr">/bundle.js`, minifyResult.code, function</span><span class="se">()</span><span class="sr"> </span><span class="err">{
+</span>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'UglifyJS completed'</span><span class="p">);</span>
+  <span class="p">});</span> 
+<span class="p">};</span>
+
+<span class="nx">clean</span><span class="p">();</span>
+<span class="nx">uglify</span><span class="p">();</span>
+</code></pre>
+</div>
+
+<p>Jekyll outputs the generated site into the <code class="highlighter-rouge">_site</code> directory and thanks to Github Pages the deploy process are just a few simple git add/commit/push commands when I initialize the <code class="highlighter-rouge">tvanro.github.io</code> repository inside this folder.</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">cd </span>_site
+git add .
+git commit -m <span class="s1">'add "Starting a blog as a developer" post'</span>
+git push origin master
+</code></pre>
+</div>
+
+<p>** BOOM MAGIC ** We’re live!</p>
+
+  </div>
+
+</article>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer id="footer" class="dark noborder">
+
+  <div id="copyrights">
+    <div class="container">Copyright Tom Van Rompaey 2017 | All Rights Reserved</div>
+    <div class="container">
+        <div class="social-icon-wrapper">
+            <a href="https://www.linkedin.com/in/tvanro/" target="_blank" class="social-icon inline-block si-small si-borderless si-linkedin">
+                <i class="icon-linkedin"></i>
+                <i class="icon-linkedin"></i>
+            </a>
+            <a href="https://www.facebook.com/tvanro" target="_blank" class="social-icon inline-block si-small si-borderless si-facebook">
+                <i class="icon-facebook"></i>
+                <i class="icon-facebook"></i>
+            </a>
+            <a href="https://stackoverflow.com/users/4810504/tom-van-rompaey" target="_blank" class="social-icon inline-block si-small si-borderless si-stackoverflow">
+                <i class="icon-stackoverflow"></i>
+                <i class="icon-stackoverflow"></i>
+            </a>
+            <a href="https://github.com/tvanro" target="_blank" class="social-icon inline-block si-small si-borderless si-github">
+                <i class="icon-github"></i>
+                <i class="icon-github"></i>
+            </a>
+            <a href="mailto:tom@tvanro.be" target="_blank" class="social-icon inline-block si-small si-borderless si-email3">
+                <i class="icon-email3"></i>
+                <i class="icon-email3"></i>
+            </a>
+        </div>
+    </div>
+  </div>
+
+</footer>
+<script type="text/javascript" src="/js/bundle.js"></script>
+
+    </div>
+
+  </body>
+
+</html>
