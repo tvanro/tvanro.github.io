@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Building A Translation Component - Tom Van Rompaey</title>
+  <meta property="og:title" content="Building A Translation Component - Tom Van Rompaey">
+  <meta name="description" content="What Are We Going To Build?We are going to build a simple component that will display text in the correct language based on the current locale from the appli...">
+  <meta property="og:description" content="What Are We Going To Build?We are going to build a simple component that will display text in the correct language based on the current locale from the appli...">
+  
+    <meta property="og:image" content="http://www.tvanro.be/assets/headers/react-redux-translation.png">
+  
+  <meta property="og:url" content="http://www.tvanro.be/tech/building-a-translation-component-with-react-and-redux/">
+  <link rel="canonical" href="http://www.tvanro.be/tech/building-a-translation-component-with-react-and-redux/">
+  <link rel="stylesheet" href="/css/main.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="data:image/x-icon;base64,AAABAAEAEBAQAAAAAAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAA//8AAP//AAD+DwAA/38AAP+/AAD4DwAAgAcAAPgDAAD8AwAA/wMAAP/DAAD/4QAA//AAAP//AAD//wAA" rel="icon" type="image/x-icon" />
+</head>
+
+  <body class="side-header">
+    <div id="wrapper">
+      <header id="header">
+  <div id="header-wrap">
+    <div class="container clearfix">
+      <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
+
+      <!-- Logo
+      ============================================= -->
+      <div id="logo">
+        
+          <h2><a href="/">Tom Van Rompaey</a></h2>
+        
+      </div>
+
+      <!-- Primary Navigation
+      ============================================= -->
+      <nav id="primary-menu">
+
+        <ul class="one-page-menu">
+          
+            
+              
+              
+              <li class=""><a class="page-link" href="/about/">About</a></li>
+            
+          
+            
+              
+              
+              <li class=""><a class="page-link" href="/food/">Food</a></li>
+            
+          
+            
+          
+            
+          
+            
+              
+              
+              <li class="current"><a class="page-link" href="/tech/">Tech</a></li>
+            
+          
+            
+              
+              
+              <li class=""><a class="page-link" href="/travel/">Travel</a></li>
+            
+          
+        </ul>
+
+      </nav>
+
+      <div class="clearfix social-icon-wrapper visible-md visible-lg">
+          <a href="https://www.linkedin.com/in/tvanro/" target="_blank" class="social-icon si-small si-borderless si-linkedin">
+              <i class="icon-linkedin"></i>
+              <i class="icon-linkedin"></i>
+          </a>
+          <a href="https://www.facebook.com/tvanro" target="_blank" class="social-icon si-small si-borderless si-facebook">
+              <i class="icon-facebook"></i>
+              <i class="icon-facebook"></i>
+          </a>
+          <a href="https://stackoverflow.com/users/4810504/tom-van-rompaey" target="_blank" class="social-icon si-small si-borderless si-stackoverflow">
+              <i class="icon-stackoverflow"></i>
+              <i class="icon-stackoverflow"></i>
+          </a>
+          <a href="https://github.com/tvanro" target="_blank" class="social-icon si-small si-borderless si-github">
+              <i class="icon-github"></i>
+              <i class="icon-github"></i>
+          </a>
+          <a href="mailto:tom@tvanro.be" target="_blank" class="social-icon si-small si-borderless si-email3">
+              <i class="icon-email3"></i>
+              <i class="icon-email3"></i>
+          </a>
+      </div>
+
+    </div>
+
+  </div>
+
+</header>
+
+      <section id="content">
+        
+          
+          <section id="page-title" class="page-title-parallax page-title-dark" style="background-image: url('/assets/headers/react-redux-translation.png'); background-size: cover; background-position: center center;" data-stellar-background-ratio="0.2">
+            <div class="container clearfix"><h1>Building A Translation Component</h1><span>With React And Redux</span></div>
+          </section>
+        
+  			<div class="content-wrap hasheaderimage">
+          <div class="container clearfix">
+            <div class="postcontent nobottommargin clearfix">
+              <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <p class="post-meta">
+      <meta itemprop="name headline" content="Building A Translation Component" />
+      
+      <meta itemprop="image" content='/assets/headers/react-redux-translation.png'>
+      
+      <time datetime="2017-05-14T00:00:00+08:00" itemprop="datePublished"></time>
+      
+    </p>
+    
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <h2 id="what-are-we-going-to-build">What Are We Going To Build?</h2>
+<p>We are going to build a simple component that will display text in the correct language based on the current <code class="highlighter-rouge">locale</code> from the application state (managed by Redux). Updating the <code class="highlighter-rouge">locale</code> will trigger a re-render of the Translation component which will result in a clean language switch without a page reload and without re-rendering any parent components.</p>
+
+<p>The result is viewable <a href="/demos/react-redux-translation/" target="_blank">on the demo page</a> and you can see the <a href="https://github.com/tvanro/react-redux-translation-example" target="_blank">source code on Github</a>.</p>
+
+<h2 id="requirements">Requirements</h2>
+<ul>
+  <li><a href="https://github.com/facebook/react" target="_blank">react</a></li>
+  <li><a href="https://github.com/reactjs/redux" target="_blank">redux</a></li>
+  <li><a href="https://github.com/reactjs/react-redux" target="_blank">react-redux</a></li>
+</ul>
+
+<h2 id="files-we-will-create">Files We Will Create</h2>
+<ul>
+  <li>components
+    <ul>
+      <li>Translation
+        <ul>
+          <li>actions.js</li>
+          <li>Translation.jsx</li>
+          <li>TranslationContainer.jsx</li>
+          <li>reducer.js</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>constants
+    <ul>
+      <li>translations.js</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="translation-component">Translation Component</h2>
+<p>The component itself is just a small render function that will display the translated text. You’ll notice that it’s rendered with a <code class="highlighter-rouge">&lt;span&gt;</code> around the translation and this is because JSX enforces you to always have a wrapping element. The upcoming version of React however (with the new <a href="https://github.com/acdlite/react-fiber-architecture" target="_blank">React Fiber</a> core) will make it possible to just return a string but until then we’ll just have to do it with out wrapping <code class="highlighter-rouge">&lt;span&gt;</code> element.</p>
+
+<p><strong>components/Translation/Translation.jsx</strong></p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'react'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">PropTypes</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'prop-types'</span><span class="p">;</span>
+
+<span class="kr">export</span> <span class="k">default</span> <span class="kr">class</span> <span class="nx">Translation</span> <span class="kr">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="o">&lt;</span><span class="nx">span</span><span class="o">&gt;</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">translation</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/span&gt;</span><span class="se">)</span><span class="err">;
+</span>  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">Translation</span><span class="p">.</span><span class="nx">propTypes</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">translation</span><span class="p">:</span> <span class="nx">PropTypes</span><span class="p">.</span><span class="nx">string</span><span class="p">.</span><span class="nx">isRequired</span><span class="p">,</span>
+<span class="p">};</span>
+</code></pre>
+</div>
+
+<p>Based on the passed props <code class="highlighter-rouge">translationKey</code> and <code class="highlighter-rouge">locale</code> (that comes from the application state) we will try to get the correct translation from the translation constants. Whenever one of these props will change, like a language switch, we update the translation.</p>
+
+<p><strong>components/Translation/TranslationContainer.jsx</strong></p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'react'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">PropTypes</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'prop-types'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">connect</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'react-redux'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">TRANSLATIONS</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'constants/translations'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">Translation</span> <span class="nx">from</span> <span class="s1">'./Translation'</span><span class="p">;</span>
+
+<span class="kr">class</span> <span class="nx">TranslationContainer</span> <span class="kr">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+
+  <span class="nx">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kr">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">translation</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+
+  <span class="nx">componentDidMount</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_updateTranslation</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">translationKey</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">locale</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">componentWillReceiveProps</span><span class="p">(</span><span class="nx">nextProps</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// update the translation if one of the props will change</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">translationKey</span> <span class="o">!==</span> <span class="nx">nextProps</span><span class="p">.</span><span class="nx">translationKey</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">locale</span> <span class="o">!==</span> <span class="nx">nextProps</span><span class="p">.</span><span class="nx">locale</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">_updateTranslation</span><span class="p">(</span><span class="nx">nextProps</span><span class="p">.</span><span class="nx">translationKey</span><span class="p">,</span> <span class="nx">nextProps</span><span class="p">.</span><span class="nx">locale</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">_updateTranslation</span><span class="p">(</span><span class="nx">translationKey</span><span class="p">,</span> <span class="nx">activeLanguageCode</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">translationKey</span> <span class="o">&amp;&amp;</span> <span class="nx">activeLanguageCode</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">try</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="na">translation</span><span class="p">:</span> <span class="nx">TRANSLATIONS</span><span class="p">[</span><span class="nx">activeLanguageCode</span><span class="p">][</span><span class="nx">translationKey</span><span class="p">]</span> <span class="p">});</span>
+      <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">translation</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">translation</span> <span class="o">===</span> <span class="s1">''</span><span class="p">)</span> <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">Translation</span> <span class="nx">translation</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">translation</span><span class="p">}</span> <span class="sr">/</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">mapStateToProps</span><span class="p">(</span><span class="nx">state</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">locale</span><span class="p">:</span> <span class="nx">state</span><span class="p">.</span><span class="nx">translation</span><span class="p">.</span><span class="nx">locale</span><span class="p">,</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="kr">export</span> <span class="k">default</span> <span class="nx">connect</span><span class="p">(</span><span class="nx">mapStateToProps</span><span class="p">,</span> <span class="kc">null</span><span class="p">)(</span><span class="nx">TranslationContainer</span><span class="p">);</span>
+
+<span class="nx">TranslationContainer</span><span class="p">.</span><span class="nx">propTypes</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">translationKey</span><span class="p">:</span> <span class="nx">PropTypes</span><span class="p">.</span><span class="nx">string</span><span class="p">.</span><span class="nx">isRequired</span><span class="p">,</span>
+  <span class="na">locale</span><span class="p">:</span> <span class="nx">PropTypes</span><span class="p">.</span><span class="nx">string</span><span class="p">,</span>
+<span class="p">};</span>
+</code></pre>
+</div>
+
+<p>Action and Reducer to update the application store. For the demo we have set the default <code class="highlighter-rouge">locale</code> to en_US but it could also be set to null and wait for another component to dispatch the setLanguage action when it knows which local to use (React Router could be used to check a URL parameter for example).</p>
+
+<p>This is just a basic implementation of Redux, you can check the official <a href="http://redux.js.org/docs/basics/" target="_blank">Redux Basics</a> documentation for more information.</p>
+
+<p><strong>components/Translation/actions.js</strong></p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">SET_LANGUAGE</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'constants/generalConstants'</span><span class="p">;</span>
+
+<span class="kr">export</span> <span class="kd">function</span> <span class="nx">setLanguage</span><span class="p">(</span><span class="nx">locale</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="nx">SET_LANGUAGE</span><span class="p">,</span>
+    <span class="nx">locale</span><span class="p">,</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>components/Translation/reducer.js</strong></p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">SET_LANGUAGE</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'constants/generalConstants'</span><span class="p">;</span>
+
+<span class="c1">// Initial state</span>
+<span class="kr">export</span> <span class="kr">const</span> <span class="nx">initialState</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">locale</span><span class="p">:</span> <span class="s1">'en_US'</span><span class="p">,</span> <span class="c1">// default locale</span>
+<span class="p">};</span>
+
+<span class="c1">// Reducer</span>
+<span class="kr">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">reducer</span><span class="p">(</span><span class="nx">state</span> <span class="o">=</span> <span class="nx">initialState</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">switch</span> <span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="nx">SET_LANGUAGE</span><span class="err">:</span>
+      <span class="k">return</span> <span class="p">{</span> <span class="p">...</span><span class="nx">state</span><span class="p">,</span> <span class="na">locale</span><span class="p">:</span> <span class="nx">action</span><span class="p">.</span><span class="nx">locale</span> <span class="p">};</span>
+    <span class="nl">default</span><span class="p">:</span>
+      <span class="k">return</span> <span class="nx">state</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Make Redux aware of the translationReducer by adding it to the rootReducer (which will be used to create the store).</p>
+
+<p><strong>rootReducer.js</strong></p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">combineReducers</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'redux'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">translationReducer</span> <span class="nx">from</span> <span class="s1">'components/Translation/reducer'</span><span class="p">;</span>
+
+<span class="kr">export</span> <span class="kr">const</span> <span class="nx">rootReducer</span> <span class="o">=</span> <span class="nx">combineReducers</span><span class="p">({</span>
+  <span class="c1">// ... your other reducers here ...</span>
+  <span class="na">translation</span><span class="p">:</span> <span class="nx">translationReducer</span><span class="p">,</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<h2 id="translation-constants">Translation Constants</h2>
+
+<p>Finally, we have the constant containing all the translations. To keep it simple, all translations are now in a single file but it would make sense to split it up into separate files for scalability.</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">export</span> <span class="kr">const</span> <span class="nx">TRANSLATIONS</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">en_US</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">title</span><span class="p">:</span> <span class="s1">'Multilingual React Application'</span><span class="p">,</span>
+    <span class="na">table_caption</span><span class="p">:</span> <span class="s1">'Translation Example'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">fr_BE</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">title</span><span class="p">:</span> <span class="s1">'Application Multilingue React'</span><span class="p">,</span>
+    <span class="na">table_caption</span><span class="p">:</span> <span class="s1">'Exemple de traduction'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">nl_BE</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">title</span><span class="p">:</span> <span class="s1">'Meertalige React Applicatie'</span><span class="p">,</span>
+    <span class="na">table_caption</span><span class="p">:</span> <span class="s1">'Vertaling Voorbeeld'</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">zh_CN</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">title</span><span class="p">:</span> <span class="s1">'多语言 React 申请'</span><span class="p">,</span>
+    <span class="na">table_caption</span><span class="p">:</span> <span class="s1">'翻译实例'</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre>
+</div>
+
+<h2 id="tldr">TL;DR</h2>
+
+<p>It’s fairly easy to create your own translations component:</p>
+<ul>
+  <li>See the <a href="/demos/react-redux-translation/" target="_blank">demo page</a></li>
+  <li>See the <a href="https://github.com/tvanro/react-redux-translation-example" target="_blank">source code on Github</a></li>
+</ul>
+
+  </div>
+
+</article>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer id="footer" class="dark noborder">
+
+  <div id="copyrights">
+    <div class="container">© 2017 Tom Van Rompaey | All Rights Reserved</div>
+    <div class="container">
+        <div class="social-icon-wrapper">
+            <a href="https://www.linkedin.com/in/tvanro/" target="_blank" class="social-icon inline-block si-small si-borderless si-linkedin">
+                <i class="icon-linkedin"></i>
+                <i class="icon-linkedin"></i>
+            </a>
+            <a href="https://www.facebook.com/tvanro" target="_blank" class="social-icon inline-block si-small si-borderless si-facebook">
+                <i class="icon-facebook"></i>
+                <i class="icon-facebook"></i>
+            </a>
+            <a href="https://stackoverflow.com/users/4810504/tom-van-rompaey" target="_blank" class="social-icon inline-block si-small si-borderless si-stackoverflow">
+                <i class="icon-stackoverflow"></i>
+                <i class="icon-stackoverflow"></i>
+            </a>
+            <a href="https://github.com/tvanro" target="_blank" class="social-icon inline-block si-small si-borderless si-github">
+                <i class="icon-github"></i>
+                <i class="icon-github"></i>
+            </a>
+            <a href="mailto:tom@tvanro.be" target="_blank" class="social-icon inline-block si-small si-borderless si-email3">
+                <i class="icon-email3"></i>
+                <i class="icon-email3"></i>
+            </a>
+        </div>
+    </div>
+  </div>
+
+</footer>
+<script type="text/javascript" src="/js/bundle.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-50847830-2', 'tvanro.be');
+  ga('send', 'pageview');
+</script>
+
+    </div>
+
+  </body>
+
+</html>
