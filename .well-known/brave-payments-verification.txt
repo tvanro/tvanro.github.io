@@ -1,0 +1,4 @@
+This is a Brave Payments publisher verification file.
+
+Domain: tvanro.github.io
+Token: dca510d563ba77709f77a5a8c73437db8fead020863b9e23f0f46b39df58d279
