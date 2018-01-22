@@ -10,10 +10,10 @@
   <meta name="description" content="For normal bloggers it’s easyThey choose a platform they like (Wordpress, Blogger, Tumbler, … ), pickout a good looking template and start blogging.">
   <meta property="og:description" content="For normal bloggers it’s easyThey choose a platform they like (Wordpress, Blogger, Tumbler, … ), pickout a good looking template and start blogging.">
   
-    <meta property="og:image" content="http://www.tvanro.be/assets/headers/ide.jpg">
+    <meta property="og:image" content="https://tvanro.github.io/assets/headers/ide.jpg">
   
-  <meta property="og:url" content="http://www.tvanro.be/tech/starting-a-blog-as-a-developer/">
-  <link rel="canonical" href="http://www.tvanro.be/tech/starting-a-blog-as-a-developer/">
+  <meta property="og:url" content="https://tvanro.github.io/tech/starting-a-blog-as-a-developer/">
+  <link rel="canonical" href="https://tvanro.github.io/tech/starting-a-blog-as-a-developer/">
   <link rel="stylesheet" href="/css/main.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="data:image/x-icon;base64,AAABAAEAEBAQAAAAAAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAA//8AAP//AAD+DwAA/38AAP+/AAD4DwAAgAcAAPgDAAD8AwAA/wMAAP/DAAD/4QAA//AAAP//AAD//wAA" rel="icon" type="image/x-icon" />
@@ -149,15 +149,14 @@
 
 <p><strong>/_plugins/build.rb</strong></p>
 
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="no">Jekyll</span><span class="o">::</span><span class="no">Hooks</span><span class="p">.</span><span class="nf">register</span> <span class="ss">:site</span><span class="p">,</span> <span class="ss">:post_write</span> <span class="k">do</span> <span class="o">|</span><span class="n">site</span><span class="o">|</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Jekyll</span><span class="o">::</span><span class="no">Hooks</span><span class="p">.</span><span class="nf">register</span> <span class="ss">:site</span><span class="p">,</span> <span class="ss">:post_write</span> <span class="k">do</span> <span class="o">|</span><span class="n">site</span><span class="o">|</span>
     <span class="nb">system</span><span class="p">(</span><span class="s1">'node build.js'</span><span class="p">)</span>
 <span class="k">end</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><strong>build.js</strong></p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">CleanCSS</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'clean-css'</span><span class="p">);</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">CleanCSS</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'clean-css'</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">UglifyJS</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'uglify-js'</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs'</span><span class="p">);</span>
 
@@ -166,36 +165,34 @@
 
 <span class="kd">var</span> <span class="nx">clean</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="c1">// minify CSS</span>
-  <span class="kd">var</span> <span class="nx">css</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="nx">stylesheetLocation</span><span class="p">}</span><span class="sr">/main.css`, 'utf8'</span><span class="se">)</span><span class="err">;
-</span>  <span class="k">new</span> <span class="nx">CleanCSS</span><span class="p">().</span><span class="nx">minify</span><span class="p">(</span><span class="nx">css</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">errors</span><span class="p">,</span> <span class="nx">minified</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">css</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">stylesheetLocation</span><span class="p">}</span><span class="s2">/main.css`</span><span class="p">,</span> <span class="s1">'utf8'</span><span class="p">);</span>
+  <span class="k">new</span> <span class="nx">CleanCSS</span><span class="p">().</span><span class="nx">minify</span><span class="p">(</span><span class="nx">css</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">errors</span><span class="p">,</span> <span class="nx">minified</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// minified.styles </span>
-    <span class="nx">fs</span><span class="p">.</span><span class="nx">writeFile</span><span class="p">(</span><span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="nx">stylesheetLocation</span><span class="p">}</span><span class="sr">/main.min.css`, minified.styles, function</span><span class="se">()</span><span class="sr"> </span><span class="err">{
-</span>      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'CleanCSS completed'</span><span class="p">);</span>
+    <span class="nx">fs</span><span class="p">.</span><span class="nx">writeFile</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">stylesheetLocation</span><span class="p">}</span><span class="s2">/main.min.css`</span><span class="p">,</span> <span class="nx">minified</span><span class="p">.</span><span class="nx">styles</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'CleanCSS completed'</span><span class="p">);</span>
     <span class="p">});</span>
   <span class="p">});</span>
 <span class="p">};</span>
 
 <span class="kd">var</span> <span class="nx">uglify</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="c1">// minify JS</span>
-  <span class="kd">var</span> <span class="nx">minifyResult</span> <span class="o">=</span> <span class="nx">UglifyJS</span><span class="p">.</span><span class="nx">minify</span><span class="p">([</span> <span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="nx">jsLocation</span><span class="p">}</span><span class="sr">/tvanro.js` ]</span><span class="se">)</span><span class="err">;
-</span>  <span class="nx">fs</span><span class="p">.</span><span class="nx">writeFile</span><span class="p">(</span><span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="nx">jsLocation</span><span class="p">}</span><span class="sr">/bundle.js`, minifyResult.code, function</span><span class="se">()</span><span class="sr"> </span><span class="err">{
-</span>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'UglifyJS completed'</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">minifyResult</span> <span class="o">=</span> <span class="nx">UglifyJS</span><span class="p">.</span><span class="nx">minify</span><span class="p">([</span> <span class="s2">`</span><span class="p">${</span><span class="nx">jsLocation</span><span class="p">}</span><span class="s2">/tvanro.js`</span> <span class="p">]);</span>
+  <span class="nx">fs</span><span class="p">.</span><span class="nx">writeFile</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">jsLocation</span><span class="p">}</span><span class="s2">/bundle.js`</span><span class="p">,</span> <span class="nx">minifyResult</span><span class="p">.</span><span class="nx">code</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'UglifyJS completed'</span><span class="p">);</span>
   <span class="p">});</span> 
 <span class="p">};</span>
 
 <span class="nx">clean</span><span class="p">();</span>
 <span class="nx">uglify</span><span class="p">();</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Jekyll outputs the generated site into the <code class="highlighter-rouge">_site</code> directory and thanks to Github Pages the deploy process are just a few simple git add/commit/push commands when I initialize the <code class="highlighter-rouge">tvanro.github.io</code> repository inside this folder.</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">cd </span>_site
-git add .
-git commit -m <span class="s1">'add "Starting a blog as a developer" post'</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>_site
+git add <span class="nb">.</span>
+git commit <span class="nt">-m</span> <span class="s1">'add "Starting a blog as a developer" post'</span>
 git push origin master
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>** BOOM MAGIC ** We’re live!</p>
 
@@ -211,7 +208,7 @@ git push origin master
       <footer id="footer" class="dark noborder">
 
   <div id="copyrights">
-    <div class="container">© 2017 Tom Van Rompaey | All Rights Reserved</div>
+    <div class="container">© 2018 Tom Van Rompaey | All Rights Reserved</div>
     <div class="container">
         <div class="social-icon-wrapper">
             <a href="https://www.linkedin.com/in/tvanro/" target="_blank" class="social-icon inline-block si-small si-borderless si-linkedin">
