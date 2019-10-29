@@ -47,12 +47,6 @@
             
           
             
-              
-              
-              <li class=""><a class="page-link" href="/food/">Food</a></li>
-            
-          
-            
           
             
           
@@ -60,12 +54,6 @@
               
               
               <li class="current"><a class="page-link" href="/tech/">Tech</a></li>
-            
-          
-            
-              
-              
-              <li class=""><a class="page-link" href="/travel/">Travel</a></li>
             
           
         </ul>
@@ -119,7 +107,7 @@
       
       <meta itemprop="image" content='/assets/headers/translation-book.jpg'>
       
-      <time datetime="2017-05-14T00:00:00+02:00" itemprop="datePublished"></time>
+      <time datetime="2017-05-14T00:00:00-07:00" itemprop="datePublished"></time>
       
     </p>
     
@@ -164,8 +152,8 @@
 
 <p><strong>components/Translation/Translation.jsx</strong></p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'react'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">PropTypes</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'prop-types'</span><span class="p">;</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">PropTypes</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">prop-types</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="k">export</span> <span class="k">default</span> <span class="kd">class</span> <span class="nx">Translation</span> <span class="kd">extends</span> <span class="nx">Component</span> <span class="p">{</span>
 
@@ -183,18 +171,18 @@
 
 <p><strong>components/Translation/TranslationContainer.jsx</strong></p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'react'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">PropTypes</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'prop-types'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">connect</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'react-redux'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">TRANSLATIONS</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'constants/translations'</span><span class="p">;</span>
-<span class="k">import</span> <span class="nx">Translation</span> <span class="k">from</span> <span class="s1">'./Translation'</span><span class="p">;</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">PropTypes</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">prop-types</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">connect</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-redux</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">TRANSLATIONS</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">constants/translations</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">Translation</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./Translation</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="kd">class</span> <span class="nx">TranslationContainer</span> <span class="kd">extends</span> <span class="nx">Component</span> <span class="p">{</span>
 
   <span class="kd">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="na">translation</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+      <span class="na">translation</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span>
     <span class="p">};</span>
   <span class="p">}</span>
 
@@ -220,7 +208,7 @@
   <span class="p">}</span>
 
   <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">translation</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">translation</span> <span class="o">===</span> <span class="s1">''</span><span class="p">)</span> <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">translation</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">translation</span> <span class="o">===</span> <span class="dl">''</span><span class="p">)</span> <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
     <span class="k">return</span> <span class="p">(</span>
       <span class="o">&lt;</span><span class="nx">Translation</span> <span class="nx">translation</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">translation</span><span class="p">}</span> <span class="sr">/</span><span class="err">&gt;
 </span>    <span class="p">);</span>
@@ -247,7 +235,7 @@
 
 <p><strong>components/Translation/actions.js</strong></p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SET_LANGUAGE</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'constants/generalConstants'</span><span class="p">;</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SET_LANGUAGE</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">constants/generalConstants</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="k">export</span> <span class="kd">function</span> <span class="nx">setLanguage</span><span class="p">(</span><span class="nx">locale</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">return</span> <span class="p">{</span>
@@ -259,11 +247,11 @@
 
 <p><strong>components/Translation/reducer.js</strong></p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SET_LANGUAGE</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'constants/generalConstants'</span><span class="p">;</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SET_LANGUAGE</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">constants/generalConstants</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="c1">// Initial state</span>
 <span class="k">export</span> <span class="kd">const</span> <span class="nx">initialState</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">locale</span><span class="p">:</span> <span class="s1">'en_US'</span><span class="p">,</span> <span class="c1">// default locale</span>
+  <span class="na">locale</span><span class="p">:</span> <span class="dl">'</span><span class="s1">en_US</span><span class="dl">'</span><span class="p">,</span> <span class="c1">// default locale</span>
 <span class="p">};</span>
 
 <span class="c1">// Reducer</span>
@@ -281,8 +269,8 @@
 
 <p><strong>rootReducer.js</strong></p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">combineReducers</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'redux'</span><span class="p">;</span>
-<span class="k">import</span> <span class="nx">translationReducer</span> <span class="k">from</span> <span class="s1">'components/Translation/reducer'</span><span class="p">;</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">combineReducers</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">redux</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">translationReducer</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">components/Translation/reducer</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="k">export</span> <span class="kd">const</span> <span class="nx">rootReducer</span> <span class="o">=</span> <span class="nx">combineReducers</span><span class="p">({</span>
   <span class="c1">// ... your other reducers here ...</span>
@@ -296,20 +284,20 @@
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">const</span> <span class="nx">TRANSLATIONS</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">en_US</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">title</span><span class="p">:</span> <span class="s1">'Multilingual React Application'</span><span class="p">,</span>
-    <span class="na">table_caption</span><span class="p">:</span> <span class="s1">'Translation Example'</span><span class="p">,</span>
+    <span class="na">title</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Multilingual React Application</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">table_caption</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Translation Example</span><span class="dl">'</span><span class="p">,</span>
   <span class="p">},</span>
   <span class="na">fr_BE</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">title</span><span class="p">:</span> <span class="s1">'Application Multilingue React'</span><span class="p">,</span>
-    <span class="na">table_caption</span><span class="p">:</span> <span class="s1">'Exemple de traduction'</span><span class="p">,</span>
+    <span class="na">title</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Application Multilingue React</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">table_caption</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Exemple de traduction</span><span class="dl">'</span><span class="p">,</span>
   <span class="p">},</span>
   <span class="na">nl_BE</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">title</span><span class="p">:</span> <span class="s1">'Meertalige React Applicatie'</span><span class="p">,</span>
-    <span class="na">table_caption</span><span class="p">:</span> <span class="s1">'Vertaling Voorbeeld'</span><span class="p">,</span>
+    <span class="na">title</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Meertalige React Applicatie</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">table_caption</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Vertaling Voorbeeld</span><span class="dl">'</span><span class="p">,</span>
   <span class="p">},</span>
   <span class="na">zh_CN</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">title</span><span class="p">:</span> <span class="s1">'多语言 React 申请'</span><span class="p">,</span>
-    <span class="na">table_caption</span><span class="p">:</span> <span class="s1">'翻译实例'</span><span class="p">,</span>
+    <span class="na">title</span><span class="p">:</span> <span class="dl">'</span><span class="s1">多语言 React 申请</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">table_caption</span><span class="p">:</span> <span class="dl">'</span><span class="s1">翻译实例</span><span class="dl">'</span><span class="p">,</span>
   <span class="p">}</span>
 <span class="p">};</span>
 </code></pre></div></div>
@@ -334,7 +322,7 @@
       <footer id="footer" class="dark noborder">
 
   <div id="copyrights">
-    <div class="container">© 2018 Tom Van Rompaey | All Rights Reserved</div>
+    <div class="container">© 2019 Tom Van Rompaey | All Rights Reserved</div>
     <div class="container">
         <div class="social-icon-wrapper">
             <a href="https://www.linkedin.com/in/tvanro/" target="_blank" class="social-icon inline-block si-small si-borderless si-linkedin">
